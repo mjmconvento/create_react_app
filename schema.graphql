@@ -1,0 +1,64 @@
+schema {
+  query: Query
+  mutation: MyMutations
+}
+
+type CreatePost {
+  ok: Boolean
+}
+
+type DeletePost {
+  ok: Boolean
+}
+
+type MyMutations {
+  createPost(imageUrl: String, description: String): CreatePost
+  deletePost(id: Int): DeletePost
+}
+
+# An object with an ID
+interface Node {
+  # The ID of the object.
+  id: ID!
+}
+
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+type Post implements Node {
+  # The ID of the object.
+  id: ID!
+  description: String!
+  imageUrl: String!
+}
+
+type PostConnection {
+  pageInfo: PageInfo!
+  edges: [PostEdge]!
+}
+
+type PostEdge {
+  # The item at the end of the edge
+  node: Post
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type Query {
+  # The ID of the object
+  post(id: ID!): Post
+  allPosts(before: String, after: String, first: Int, last: Int, description: String, imageUrl: String): PostConnection
+}
+
