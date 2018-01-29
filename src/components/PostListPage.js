@@ -6,6 +6,7 @@ import {
 
 import environment from '../Environment'
 import PostList from './PostList'
+import { withRouter, Link } from 'react-router-dom'
 
 const PostListPageQuery = graphql`
     query PostListPageQuery {
@@ -35,10 +36,11 @@ class PostListPage extends Component {
                         return (
                             <div>
                                 {props.allPosts.edges.map(({node}) =>
-                                    <div>
+                                    <div key={node.id}>
                                         {node.id} - {node.imageUrl} - {node.description}
                                     </div>
                                 )}
+                                <Link to="/create">Create new post</Link>
                             </div>
                         )
                     }

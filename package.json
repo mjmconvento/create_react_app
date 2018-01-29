@@ -6,6 +6,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-relay": "^1.4.1",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
     "relay-runtime": "^1.4.1"
   },
@@ -13,7 +14,7 @@
     "build": "node ./setup && react-scripts build",
     "test": "node ./setup && react-scripts test --env=jsdom",
     "start": "node ./setup && react-scripts start",
-    "relay" : "relay-compiler --src ./src --schema ./schema.graphql"
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
   },
   "devDependencies": {
     "babel-plugin-relay": "^1.4.1",
