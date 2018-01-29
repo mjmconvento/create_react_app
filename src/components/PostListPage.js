@@ -3,7 +3,6 @@ import {
     QueryRenderer,
     graphql
 } from 'react-relay'
-
 import environment from '../Environment'
 import PostList from './PostList'
 import { withRouter, Link } from 'react-router-dom'
