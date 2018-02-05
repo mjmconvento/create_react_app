@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2e94506de17a301fded4a07371f1538e
+ * @relayHash 598c589a55f4cf0e1d5997184f180bca
  */
 
 /* eslint-disable */
@@ -69,7 +69,7 @@ const batch /*: ConcreteBatch*/ = {
             "type": "String"
           }
         ],
-        "concreteType": "CreatePost",
+        "concreteType": "createPost",
         "name": "createPost",
         "plural": false,
         "selections": [
@@ -126,7 +126,7 @@ const batch /*: ConcreteBatch*/ = {
             "type": "String"
           }
         ],
-        "concreteType": "CreatePost",
+        "concreteType": "createPost",
         "name": "createPost",
         "plural": false,
         "selections": [

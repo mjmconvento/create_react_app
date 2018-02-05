@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8ffe8b49678b8fc7901ee7f1b0ba6699
+ * @relayHash 8c9c6de92ec26f80bf6d388f2029599c
  */
 
 /* eslint-disable */
@@ -14,8 +14,8 @@ export type PostListPageQueryResponse = {|
     +edges: $ReadOnlyArray<?{|
       +node: ?{|
         +id: string;
-        +description: string;
-        +imageUrl: string;
+        +description: ?string;
+        +imageUrl: ?string;
       |};
     |}>;
   |};
@@ -48,7 +48,7 @@ const batch /*: ConcreteBatch*/ = {
         "kind": "LinkedField",
         "alias": null,
         "args": null,
-        "concreteType": "PostConnection",
+        "concreteType": "PostsConnection",
         "name": "allPosts",
         "plural": false,
         "selections": [
@@ -56,7 +56,7 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "PostEdge",
+            "concreteType": "PostsEdge",
             "name": "edges",
             "plural": true,
             "selections": [
@@ -64,7 +64,7 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
-                "concreteType": "Post",
+                "concreteType": "Posts",
                 "name": "node",
                 "plural": false,
                 "selections": [
@@ -115,7 +115,7 @@ const batch /*: ConcreteBatch*/ = {
         "kind": "LinkedField",
         "alias": null,
         "args": null,
-        "concreteType": "PostConnection",
+        "concreteType": "PostsConnection",
         "name": "allPosts",
         "plural": false,
         "selections": [
@@ -123,7 +123,7 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "PostEdge",
+            "concreteType": "PostsEdge",
             "name": "edges",
             "plural": true,
             "selections": [
@@ -131,7 +131,7 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
-                "concreteType": "Post",
+                "concreteType": "Posts",
                 "name": "node",
                 "plural": false,
                 "selections": [

@@ -37,9 +37,13 @@ class PostListPage extends Component {
                                 {props.allPosts.edges.map(({node}) =>
                                     <div key={node.id}>
                                         {node.id} - {node.imageUrl} - {node.description}
+
+                                        <div className='button'onClick={() => this._deletePost()}>Delete</div>
+                                        <br />
                                     </div>
                                 )}
-                                <Link to="/create">Create new post</Link>
+                                <Link to="/create">Create new post</Link><br/>
+                                <Link to="/upload">Upload</Link>
                             </div>
                         )
                     }
@@ -49,6 +53,14 @@ class PostListPage extends Component {
             />
         )
     }
+
+
+    _deletePost = () => {
+        alert('delete');
+        // const {description, imageUrl} = this.state
+        // CreatePostMutation(description, imageUrl, () => console.log('Mutation Completed'))
+    }
+
 }
 
 export default PostListPage 
