@@ -35,7 +35,7 @@ class CompleteUpload extends React.Component {
                     />
                 </label>
                 <br />
-                <button type="submit"
+                <button className="ui button" type="submit"
                 >
                     Submit
                 </button>

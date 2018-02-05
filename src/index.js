@@ -8,7 +8,7 @@ import CompleteUpload from './components/CompleteUpload';
 import registerServiceWorker from './registerServiceWorker';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import './semantic/dist/semantic.min.css';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 render(
