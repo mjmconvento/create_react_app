@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash fefeb7a61f9fbdf1fef41287a5e8b964
+ * @relayHash 7b055159e64f220aa17bc60284eaf491
  */
 
 /* eslint-disable */
@@ -10,33 +10,26 @@
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
 export type InboxDataPageQueryResponse = {|
-  +allMessages: ?{|
-    +edges: $ReadOnlyArray<?{|
-      +node: ?{|
-        +id: string;
-        +message: ?string;
-        +createdAt: ?any;
-        +updatedAt: ?any;
-      |};
-    |}>;
-  |};
+  +allMessages: ?$ReadOnlyArray<?{|
+    +id: string;
+    +message: ?string;
+    +createdAt: ?any;
+    +updatedAt: ?any;
+  |}>;
 |};
 */
 
 
 /*
 query InboxDataPageQuery(
-  $first: Int
+  $like_message: String
+  $limit: Int
 ) {
-  allMessages(first: $first) {
-    edges {
-      node {
-        id
-        message
-        createdAt
-        updatedAt
-      }
-    }
+  allMessages(likeMessage: $like_message, limit: $limit) {
+    id
+    message
+    createdAt
+    updatedAt
   }
 }
 */
@@ -46,7 +39,13 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
-        "name": "first",
+        "name": "like_message",
+        "type": "String",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
+        "name": "limit",
         "type": "Int",
         "defaultValue": null
       }
@@ -61,63 +60,47 @@ const batch /*: ConcreteBatch*/ = {
         "args": [
           {
             "kind": "Variable",
-            "name": "first",
-            "variableName": "first",
+            "name": "likeMessage",
+            "variableName": "like_message",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "limit",
+            "variableName": "limit",
             "type": "Int"
           }
         ],
-        "concreteType": "MessagesConnection",
+        "concreteType": "Messages",
         "name": "allMessages",
-        "plural": false,
+        "plural": true,
         "selections": [
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "concreteType": "MessagesEdge",
-            "name": "edges",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "Messages",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "message",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "createdAt",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "updatedAt",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
+            "name": "id",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "message",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "createdAt",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "updatedAt",
             "storageKey": null
           }
         ],
@@ -134,7 +117,13 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
-        "name": "first",
+        "name": "like_message",
+        "type": "String",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
+        "name": "limit",
         "type": "Int",
         "defaultValue": null
       }
@@ -149,63 +138,47 @@ const batch /*: ConcreteBatch*/ = {
         "args": [
           {
             "kind": "Variable",
-            "name": "first",
-            "variableName": "first",
+            "name": "likeMessage",
+            "variableName": "like_message",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "limit",
+            "variableName": "limit",
             "type": "Int"
           }
         ],
-        "concreteType": "MessagesConnection",
+        "concreteType": "Messages",
         "name": "allMessages",
-        "plural": false,
+        "plural": true,
         "selections": [
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "concreteType": "MessagesEdge",
-            "name": "edges",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "Messages",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "message",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "createdAt",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "updatedAt",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
+            "name": "id",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "message",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "createdAt",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "updatedAt",
             "storageKey": null
           }
         ],
@@ -213,7 +186,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query InboxDataPageQuery(\n  $first: Int\n) {\n  allMessages(first: $first) {\n    edges {\n      node {\n        id\n        message\n        createdAt\n        updatedAt\n      }\n    }\n  }\n}\n"
+  "text": "query InboxDataPageQuery(\n  $like_message: String\n  $limit: Int\n) {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    id\n    message\n    createdAt\n    updatedAt\n  }\n}\n"
 };
 
 module.exports = batch;

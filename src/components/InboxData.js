@@ -5,26 +5,26 @@ import { QueryRenderer, graphql } from "react-relay";
 
 
 const InboxDataQuery = graphql`
-  query InboxDataPageQuery($first: Int) {
-    allMessages(first: $first) {
-      edges {
-        node {
-          id
-          message
-          createdAt
-          updatedAt
-        }
-      }
+  query InboxDataPageQuery($like_message: String, $limit: Int) {
+    allMessages(likeMessage: $like_message, limit: $limit) {
+      id
+      message
+      createdAt
+      updatedAt
     }
   }
 `;
+
 
 class InboxData extends Component {
   render() {
     return (
       <QueryRenderer
         environment={environment}
-        variables={{first: 10}}
+        variables={{
+          like_message: "",
+          limit: 4,
+        }}
         query={InboxDataQuery}
         render={({ error, props }) => {
           if (error) {
@@ -38,7 +38,7 @@ class InboxData extends Component {
             console.log(InboxDataQuery);
             return (
               <div>
-                {props.allMessages.edges.map(({ node }) => (
+                {props.allMessages.map(( node ) => (
 
                   <Grid key={node.id}>
                     <Grid.Row>
@@ -61,6 +61,10 @@ class InboxData extends Component {
                   </Grid>
 
                 ))}
+
+
+
+
               </div>
             );
           }
