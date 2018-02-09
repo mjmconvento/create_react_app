@@ -19,6 +19,32 @@ type createUser {
   user: Users
 }
 
+# The `DateTime` scalar type represents a DateTime
+# value as specified by
+# [iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+scalar DateTime
+
+type Messages implements Node {
+  # The ID of the object.
+  id: ID!
+  message: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type MessagesConnection {
+  pageInfo: PageInfo!
+  edges: [MessagesEdge]!
+}
+
+type MessagesEdge {
+  # The item at the end of the edge
+  node: Messages
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 type MyMutations {
   createUser(username: String, name: String, email: String): createUser
   createPost(imageUrl: String, description: String): createPost
@@ -71,8 +97,10 @@ type Query {
   node(id: ID!): Node
   user(before: String, after: String, first: Int, last: Int): UsersConnection
   findUser(username: String): Users
+  findPost(id: Int): Posts
   allUsers(before: String, after: String, first: Int, last: Int): UsersConnection
   allPosts(before: String, after: String, first: Int, last: Int): PostsConnection
+  allMessages(before: String, after: String, first: Int, last: Int): MessagesConnection
 }
 
 scalar Upload
