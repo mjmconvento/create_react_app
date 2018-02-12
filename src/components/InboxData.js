@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Icon, Grid, Dimmer, Loader } from "semantic-ui-react";
 import environment from "../Environment";
 import { QueryRenderer, graphql } from "react-relay";
+import Moment from 'react-moment';
 
 
 const InboxDataQuery = graphql`
@@ -46,7 +47,8 @@ class InboxData extends Component {
                         <Icon name='reply' />
                       </Grid.Column>
                       <Grid.Column width={15}>
-                        <u>{node.createdAt}</u>
+                        <u>
+                          <Moment format="MM-DD-YYYY">{node.createdAt}</Moment></u>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
