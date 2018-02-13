@@ -35,8 +35,6 @@ class InboxData extends Component {
               </Dimmer>
             )
           } else if (props) {
-            console.log(props);
-            console.log(InboxDataQuery);
             return (
               <div>
                 {props.allMessages.map(( node ) => (
@@ -48,7 +46,8 @@ class InboxData extends Component {
                       </Grid.Column>
                       <Grid.Column width={15}>
                         <u>
-                          <Moment format="MM-DD-YYYY">{node.createdAt}</Moment></u>
+                          <Moment format="MM-DD-YYYY">{node.createdAt}</Moment>
+                        </u>
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -61,22 +60,17 @@ class InboxData extends Component {
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
-
                 ))}
-
-
-
-
               </div>
             );
           }
 
-            return (
-              <Dimmer active>
-                <Loader>Loading</Loader>
-              </Dimmer>
+          return (
+            <Dimmer active>
+              <Loader>Loading</Loader>
+            </Dimmer>
 
-            )
+          )
         }}
       />
 
