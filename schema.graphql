@@ -32,6 +32,19 @@ type Messages implements Node {
   updatedAt: DateTime
 }
 
+type MessagesConnection {
+  pageInfo: PageInfo!
+  edges: [MessagesEdge]!
+}
+
+type MessagesEdge {
+  # The item at the end of the edge
+  node: Messages
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 type MyMutations {
   createUser(username: String, name: String, email: String): createUser
   createPost(imageUrl: String, description: String): createPost
@@ -83,8 +96,10 @@ type Query {
   # The ID of the object
   node(id: ID!): Node
   user(before: String, after: String, first: Int, last: Int): UsersConnection
+  message(before: String, after: String, first: Int, last: Int): MessagesConnection
   findUser(username: String): Users
   findPost(id: Int): Posts
+  findMessage(id: Int): Messages
   allUsers(before: String, after: String, first: Int, last: Int): UsersConnection
   allPosts(before: String, after: String, first: Int, last: Int): PostsConnection
   hello(name: String = "stranger", age: Int): String

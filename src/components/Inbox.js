@@ -18,9 +18,6 @@ class Inbox extends Component {
       },
     ]
 
-
-
-
     return (
       <div>
         <div>My Inbox</div>

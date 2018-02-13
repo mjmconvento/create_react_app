@@ -6,7 +6,8 @@ import {
   Grid,
   Image,
 } from "semantic-ui-react";
-import logo2 from "./images/logo2.jpeg";
+import green_status from "./images/green.png";
+import yellow_status from "./images/yellow.png";
 import ModalUpload from "./ModalUpload";
 
 class FullClient extends Component {
@@ -32,17 +33,20 @@ class FullClient extends Component {
           {
             id: 1,
             client_name: 'Texas Nursing Home',
-            last_activity: '01/01/2018'
+            last_activity: '01/01/2018',
+            logo: green_status,
           },
           {
             id: 2,
             client_name: 'Medical company',
-            last_activity: '01/01/2018'
+            last_activity: '01/01/2018',
+            logo: yellow_status,
           },
           {
             id: 3,
             client_name: 'Branx Hospital',
-            last_activity: '10/01/2017'
+            last_activity: '10/01/2017',
+            logo: yellow_status,
           }
         ]
       },
@@ -54,17 +58,20 @@ class FullClient extends Component {
           {
             id: 1,
             client_name: 'Texas Nursing Home',
-            last_activity: '01/01/2018'
+            last_activity: '01/01/2018',
+            logo: green_status,
           },
           {
             id: 2,
             client_name: 'Medical company',
-            last_activity: '01/01/2018'
+            last_activity: '01/01/2018',
+            logo: green_status,
           },
           {
             id: 3,
             client_name: 'Branx Hospital',
-            last_activity: '10/01/2017'
+            last_activity: '10/01/2017',
+            logo: green_status,
           }
         ]
       },
@@ -76,17 +83,20 @@ class FullClient extends Component {
           {
             id: 1,
             client_name: 'Texas Nursing Home',
-            last_activity: '01/01/2018'
+            last_activity: '01/01/2018',
+            logo: green_status,
           },
           {
             id: 2,
             client_name: 'Medical company',
-            last_activity: '01/01/2018'
+            last_activity: '01/01/2018',
+            logo: yellow_status,
           },
           {
             id: 3,
             client_name: 'Branx Hospital',
-            last_activity: '10/01/2017'
+            last_activity: '10/01/2017',
+            logo: green_status,
           }
         ]
       },
@@ -114,7 +124,7 @@ class FullClient extends Component {
                         <Grid>
                           <Grid.Row>
                             <Grid.Column width={2}>
-                              <Image src={logo2} size="small" />
+                              <Image style={{ width: '70px', height: '70px' }} src={data_content.logo} size="small" />
                             </Grid.Column>
                             <Grid.Column width={11}>
                               <div>{data_content.client_name}</div>

@@ -18,8 +18,8 @@ function fetchQuery(
         headers: {}
     }
 
-    console.log(operation);
-    console.log(variables);
+    // console.log(operation);
+    // console.log(variables);
     if (uploadables) {
         if (!window.FormData) {
             throw new Error('Uploading files without `FormData` not supported.');
