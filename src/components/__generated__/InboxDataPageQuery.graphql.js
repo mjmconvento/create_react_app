@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7b055159e64f220aa17bc60284eaf491
+ * @relayHash b231c090f824ed3aac6e7f8626d648c4
  */
 
 /* eslint-disable */
@@ -9,14 +9,7 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type InboxDataPageQueryResponse = {|
-  +allMessages: ?$ReadOnlyArray<?{|
-    +id: string;
-    +message: ?string;
-    +createdAt: ?any;
-    +updatedAt: ?any;
-  |}>;
-|};
+export type InboxDataPageQueryResponse = {| |};
 */
 
 
@@ -25,11 +18,13 @@ query InboxDataPageQuery(
   $like_message: String
   $limit: Int
 ) {
+  ...InboxData_messages_4aAQTj
+}
+
+fragment InboxData_messages_4aAQTj on Query {
   allMessages(likeMessage: $like_message, limit: $limit) {
-    id
     message
-    createdAt
-    updatedAt
+    id
   }
 }
 */
@@ -55,56 +50,22 @@ const batch /*: ConcreteBatch*/ = {
     "name": "InboxDataPageQuery",
     "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
+        "kind": "FragmentSpread",
+        "name": "InboxData_messages",
         "args": [
           {
             "kind": "Variable",
             "name": "likeMessage",
             "variableName": "like_message",
-            "type": "String"
+            "type": null
           },
           {
             "kind": "Variable",
             "name": "limit",
             "variableName": "limit",
-            "type": "Int"
+            "type": null
           }
-        ],
-        "concreteType": "Messages",
-        "name": "allMessages",
-        "plural": true,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "message",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "createdAt",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "updatedAt",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
+        ]
       }
     ],
     "type": "Query"
@@ -157,13 +118,6 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "name": "id",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
             "name": "message",
             "storageKey": null
           },
@@ -171,14 +125,7 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "name": "createdAt",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "updatedAt",
+            "name": "id",
             "storageKey": null
           }
         ],
@@ -186,7 +133,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query InboxDataPageQuery(\n  $like_message: String\n  $limit: Int\n) {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    id\n    message\n    createdAt\n    updatedAt\n  }\n}\n"
+  "text": "query InboxDataPageQuery(\n  $like_message: String\n  $limit: Int\n) {\n  ...InboxData_messages_4aAQTj\n}\n\nfragment InboxData_messages_4aAQTj on Query {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    message\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

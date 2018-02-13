@@ -1,6 +1,22 @@
 import React, { Component } from "react";
-import { Grid, Search, Dropdown } from "semantic-ui-react";
+import { Grid, Search, Dropdown, Dimmer, Loader } from "semantic-ui-react";
 import InboxData from './InboxData'
+import { QueryRenderer, graphql } from "react-relay";
+import environment from "../Environment";
+
+const InboxDataQuery = graphql`
+  query InboxDataPageQuery($like_message: String, $limit: Int) {
+    ...InboxData_messages @arguments(likeMessage: $like_message, limit: $limit)
+  }
+`;
+
+// const InboxDataQuery = graphql`
+//   query InboxDataPageQuery {
+//     allMessages {
+//       ...InboxDataFragment
+//     }
+//   }
+// `;
 
 class Inbox extends Component {
   render() {
@@ -23,6 +39,7 @@ class Inbox extends Component {
         <div>My Inbox</div>
         <br />
         <div>
+          
           <Grid>
             <Grid.Row>
               <Grid.Column width={8}>
@@ -33,7 +50,40 @@ class Inbox extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          <InboxData />
+
+
+          <QueryRenderer
+            environment={environment}
+            variables={{
+              like_message: "s",
+              limit: 4,
+            }}
+            query={InboxDataQuery}
+            render={({ error, props }) => {
+              console.log(props)
+              if (error) {
+                return (
+                  <Dimmer active>
+                    <Loader>Loading</Loader>
+                  </Dimmer>
+                )
+              } else if (props) {
+
+                return (
+                  <div>
+                      <InboxData messages={props} />
+                  </div>
+                );
+              }
+
+              return (
+                <Dimmer active>
+                  <Loader>Loading</Loader>
+                </Dimmer>
+              )
+            }}
+          />
+
           <Grid>
             <Grid.Row>
               <Grid.Column width={16}>
@@ -41,6 +91,7 @@ class Inbox extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
+
         </div>
       </div>
     );
