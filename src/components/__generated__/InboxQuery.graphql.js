@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b231c090f824ed3aac6e7f8626d648c4
+ * @relayHash 2ed5df904f3038eebbd5df01e7bc23b6
  */
 
 /* eslint-disable */
@@ -9,12 +9,12 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type InboxDataPageQueryResponse = {| |};
+export type InboxQueryResponse = {| |};
 */
 
 
 /*
-query InboxDataPageQuery(
+query InboxQuery(
   $like_message: String
   $limit: Int
 ) {
@@ -23,9 +23,15 @@ query InboxDataPageQuery(
 
 fragment InboxData_messages_4aAQTj on Query {
   allMessages(likeMessage: $like_message, limit: $limit) {
-    message
     id
+    message
+    ...InboxDataItem_node
   }
+}
+
+fragment InboxDataItem_node on Messages {
+  id
+  message
 }
 */
 
@@ -47,7 +53,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "InboxDataPageQuery",
+    "name": "InboxQuery",
     "selections": [
       {
         "kind": "FragmentSpread",
@@ -73,7 +79,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "InboxDataPageQuery",
+  "name": "InboxQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -90,7 +96,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "InboxDataPageQuery",
+    "name": "InboxQuery",
     "operation": "query",
     "selections": [
       {
@@ -118,14 +124,14 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "name": "message",
+            "name": "id",
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "name": "id",
+            "name": "message",
             "storageKey": null
           }
         ],
@@ -133,7 +139,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query InboxDataPageQuery(\n  $like_message: String\n  $limit: Int\n) {\n  ...InboxData_messages_4aAQTj\n}\n\nfragment InboxData_messages_4aAQTj on Query {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    message\n    id\n  }\n}\n"
+  "text": "query InboxQuery(\n  $like_message: String\n  $limit: Int\n) {\n  ...InboxData_messages_4aAQTj\n}\n\nfragment InboxData_messages_4aAQTj on Query {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    id\n    message\n    ...InboxDataItem_node\n  }\n}\n\nfragment InboxDataItem_node on Messages {\n  id\n  message\n}\n"
 };
 
 module.exports = batch;

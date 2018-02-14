@@ -31,11 +31,13 @@ class InboxData extends Component {
 
 export default createFragmentContainer(InboxData, graphql`
   fragment InboxData_messages on Query @argumentDefinitions(
-  likeMessage: {type: "String", defaultValue: "s"},
-  limit: {type: "Int", defaultValue: 10},
+  likeMessage: {type: "String"},
+  limit: {type: "Int"},
 ){
     allMessages(likeMessage: $like_message, limit: $limit) {
+      id
       message
+      ...InboxDataItem_node
     }
 
   }

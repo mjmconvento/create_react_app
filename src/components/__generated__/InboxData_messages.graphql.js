@@ -10,6 +10,7 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type InboxData_messages = {|
   +allMessages: ?$ReadOnlyArray<?{|
+    +id: string;
     +message: ?string;
   |}>;
 |};
@@ -22,13 +23,13 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "LocalArgument",
       "name": "likeMessage",
       "type": "String",
-      "defaultValue": "s"
+      "defaultValue": null
     },
     {
       "kind": "LocalArgument",
       "name": "limit",
       "type": "Int",
-      "defaultValue": 10
+      "defaultValue": null
     },
     {
       "kind": "RootArgument",
@@ -65,8 +66,20 @@ const fragment /*: ConcreteFragment*/ = {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
+          "name": "id",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
           "name": "message",
           "storageKey": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "InboxDataItem_node",
+          "args": null
         }
       ],
       "storageKey": null
