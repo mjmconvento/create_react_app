@@ -1,14 +1,37 @@
 import React, { Component } from "react";
-import { Icon, Grid } from "semantic-ui-react";
+import { Icon, Grid, Search, Dropdown } from "semantic-ui-react";
 import Moment from 'react-moment';
 import InboxDataItem from './InboxDataItem'
 import { QueryRenderer, graphql, createFragmentContainer } from "react-relay";
 
-
 class InboxData extends Component {
   render() {
+    const selectOptions = [ 
+      { 
+        key: 1, 
+        value: 'opt_1', 
+        text: 'Option 1' 
+      },
+      { 
+        key: 2, 
+        value: 'opt_2', 
+        text: 'Option 2'
+      },
+    ]
+
     return (
-      <div>
+      <div>        
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Search />
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Dropdown placeholder="Select Friend" fluid selection options={selectOptions} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        
         {this.props.messages.allMessages.map(( node ) => (
           <InboxDataItem key={node.id} node={node} />
         ))}

@@ -23,7 +23,9 @@ class InboxDataItem extends Component {
           <Grid.Column width={12}>{this.props.node.message}</Grid.Column>
           <Grid.Column width={3}>
             <strong>...
-              <button relay={this.props.node} onClick={this._refetch}>Refetch</button>
+              {/* 
+                <button relay={this.props.node} onClick={this._refetch}>Refetch</button> 
+              */}
             </strong>
           </Grid.Column>
         </Grid.Row>
