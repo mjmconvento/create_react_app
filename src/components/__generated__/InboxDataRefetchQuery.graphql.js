@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 0d8d77a64b6dbc4a9de7f5e30a568f30
+ * @relayHash 512badd34df5fe4d503a261fc41b46ba
  */
 
 /* eslint-disable */
@@ -9,27 +9,23 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type InboxDataItemRefetchQueryResponse = {|
+export type InboxDataRefetchQueryResponse = {|
   +allMessages: ?$ReadOnlyArray<?{|
     +id: string;
     +message: ?string;
-    +createdAt: ?any;
-    +updatedAt: ?any;
   |}>;
 |};
 */
 
 
 /*
-query InboxDataItemRefetchQuery(
+query InboxDataRefetchQuery(
   $like_message: String
   $limit: Int
 ) {
   allMessages(likeMessage: $like_message, limit: $limit) {
     id
     message
-    createdAt
-    updatedAt
     ...InboxDataItem_node
   }
 }
@@ -58,7 +54,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "InboxDataItemRefetchQuery",
+    "name": "InboxDataRefetchQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -96,20 +92,6 @@ const batch /*: ConcreteBatch*/ = {
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "createdAt",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "updatedAt",
-            "storageKey": null
-          },
-          {
             "kind": "FragmentSpread",
             "name": "InboxDataItem_node",
             "args": null
@@ -123,7 +105,7 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "InboxDataItemRefetchQuery",
+  "name": "InboxDataRefetchQuery",
   "query": {
     "argumentDefinitions": [
       {
@@ -140,7 +122,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ],
     "kind": "Root",
-    "name": "InboxDataItemRefetchQuery",
+    "name": "InboxDataRefetchQuery",
     "operation": "query",
     "selections": [
       {
@@ -177,27 +159,13 @@ const batch /*: ConcreteBatch*/ = {
             "args": null,
             "name": "message",
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "createdAt",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "updatedAt",
-            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query InboxDataItemRefetchQuery(\n  $like_message: String\n  $limit: Int\n) {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    id\n    message\n    createdAt\n    updatedAt\n    ...InboxDataItem_node\n  }\n}\n\nfragment InboxDataItem_node on Messages {\n  id\n  message\n}\n"
+  "text": "query InboxDataRefetchQuery(\n  $like_message: String\n  $limit: Int\n) {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    id\n    message\n    ...InboxDataItem_node\n  }\n}\n\nfragment InboxDataItem_node on Messages {\n  id\n  message\n}\n"
 };
 
 module.exports = batch;

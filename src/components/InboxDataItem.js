@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Icon, Grid, Dimmer, Loader } from "semantic-ui-react";
-import environment from "../Environment";
-import { QueryRenderer, graphql, createFragmentContainer, createRefetchContainer } from "react-relay";
+import { Icon, Grid } from "semantic-ui-react";
+import { graphql, createFragmentContainer } from "react-relay";
 import Moment from "react-moment";
 
 class InboxDataItem extends Component {
   render() {
+    // console.log(this.props)
     return (
       <Grid key={this.props.node.id}>
         <Grid.Row>
@@ -23,26 +23,12 @@ class InboxDataItem extends Component {
           <Grid.Column width={12}>{this.props.node.message}</Grid.Column>
           <Grid.Column width={3}>
             <strong>...
-              {/* 
-                <button relay={this.props.node} onClick={this._refetch}>Refetch</button> 
-              */}
             </strong>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     );
   }
-
- _refetch = () => {
-  console.log(this)
-    this.props.relay.refetch(
-      {like_message: ''},  // Our refetchQuery needs to know the `itemID`
-      {first: 1},  // We can use the refetchVariables as renderVariables
-      (error) => { console.log("refetching done") },
-      {force: true},  // Assuming we've configured a network layer cache, we want to ensure we fetch the latest data.
-    );
-  }
-
 }
 
 // export default createFragmentContainer(
@@ -56,23 +42,12 @@ class InboxDataItem extends Component {
 // );
 
 
-export default createRefetchContainer(
+export default createFragmentContainer(
   InboxDataItem,
   graphql`
     fragment InboxDataItem_node on Messages {
       id
       message
-    }
-  `,
-  graphql`
-    query InboxDataItemRefetchQuery($like_message: String, $limit: Int) {
-      allMessages(likeMessage: $like_message, limit: $limit) {
-        id
-        message
-        createdAt
-        updatedAt
-        ...InboxDataItem_node
-      }
     }
   `
 );
