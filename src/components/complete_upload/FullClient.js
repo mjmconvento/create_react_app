@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Accordion,
   Icon,
   Table,
   Grid,
   Image,
-} from "semantic-ui-react";
-import green_status from "./images/green.png";
-import yellow_status from "./images/yellow.png";
-import ModalUpload from "./ModalUpload";
+} from 'semantic-ui-react';
+import green_status from './images/green.png';
+import yellow_status from './images/yellow.png';
+import ModalUpload from './ModalUpload';
+import ModalMessage from './ModalMessage';
 
 class FullClient extends Component {
   state = { activeIndex: 0 };
@@ -28,7 +29,7 @@ class FullClient extends Component {
       {
         id: 1,
         index: 0,
-        title: "Full service client 01 lists",
+        title: 'Full service client 01 lists',
         data_table_content: [
           {
             id: 1,
@@ -102,6 +103,9 @@ class FullClient extends Component {
       },
     ];
 
+
+
+
     return (
       <Accordion>
         {data.map(data_node => (
@@ -112,7 +116,7 @@ class FullClient extends Component {
               onClick={this.handleClick}
             >
               <Icon name="dropdown" />
-              Full service client 01 lists
+              {data_node.title}
             </Accordion.Title>
 
             <Accordion.Content active={activeIndex === data_node.index}>
@@ -137,8 +141,11 @@ class FullClient extends Component {
                               </div>
                             </Grid.Column>
                             <Grid.Column width={3}>
-                              <Icon name="folder open" size="big" color="grey" />
-                              <Icon name="comments" size="big" color="blue" />
+                              <Icon name="folder open" size="big" color="grey" className="pointer" />
+                              <ModalMessage />
+
+
+
                             </Grid.Column>
                           </Grid.Row>
                         </Grid>

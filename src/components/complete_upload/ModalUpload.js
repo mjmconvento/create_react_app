@@ -1,46 +1,9 @@
 import React, { Component } from "react";
-import {
-  Icon,
-  Grid,
-  Table,
-  Modal,
-  Button,
-  Image,
-  Progress
-} from "semantic-ui-react";
+import { Icon, Grid, Table, Modal, Button, Image } from "semantic-ui-react";
 import xls_image from "./images/xls.png";
-import Dropzone from "react-dropzone";
-import UploadFileMutation from "../../mutations/UploadFileMutation";
+import ModalDropzone from "./ModalDropzone";
 
 class ModalUpload extends Component {
-  constructor() {
-    super();
-    this.state = {
-      disabledDropdown: false,
-      activeOpacity: "",
-      percent: 0,
-      uploaded: false,
-      fileUploaded: ""
-    };
-  }
-
-  onDrop(files) {
-    UploadFileMutation(files[0], () => console.log("Mutation Completed"));
-
-    // transfer this after upload or mutation completed
-    this.setState({ 
-      percent: 100,
-      uploaded: true,
-      fileUploaded: files[0].name
-    });
-  }
-
-  onDropAccepted() {
-    this.setState({
-      disabledDropdown: true
-    });
-  }
-
   render() {
     const data = [
       {
@@ -64,48 +27,11 @@ class ModalUpload extends Component {
       }
     ];
 
-    const activeStyle = {
-      opacity: ".7"
-    };
-
     return (
-      <Modal trigger={<u>Upload report</u>}>
+      <Modal trigger={<u className="pointer">Upload report</u>}>
         <Modal.Header>Upload Report - Texas Nursing Home</Modal.Header>
         <Modal.Content>
-          <Dropzone
-            onDrop={this.onDrop.bind(this)}
-            onDropAccepted={this.onDropAccepted.bind(this)}
-            activeStyle={activeStyle}
-            className="dropzone-style"
-            disabled={this.state.disabledDropdown}
-          >
-            {({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
-              let activeStyle = isDragActive ? 'active-opacity' : '';
-
-              if (this.state.uploaded) {
-                return (
-                  <div className="progress-bar-margin">
-                    <center>File successfully uploaded: <strong>{this.state.fileUploaded}</strong></center>
-                    <Progress percent={this.state.percent} indicating />
-                  </div>
-                )
-              }
-
-              return (
-                <div>
-                  <center className={activeStyle}>
-                    <div className="dropzone-text-margin">
-                      Drag file here or
-                    </div>
-                    <div>
-                      <Button content="Browse" />
-                    </div>
-                  </center>
-                </div>
-              )
-
-            }}
-          </Dropzone>
+          <ModalDropzone />
 
           <Table celled padded>
             <Table.Body>

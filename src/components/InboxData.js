@@ -21,7 +21,7 @@ class InboxData extends Component {
     ]
 
     return (
-      <div>        
+      <div>
         <Grid>
           <Grid.Row>
             <Grid.Column width={8}>
@@ -36,7 +36,6 @@ class InboxData extends Component {
         {this.props.messages.allMessages.map(( node ) => (
           <InboxDataItem key={node.id} node={node} />
         ))}
-
 
       </div>
     );      

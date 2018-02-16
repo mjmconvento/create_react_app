@@ -35,3 +35,24 @@
 .text-green {
 	color: green;
 }
+
+.pointer {
+	cursor: pointer;
+}
+
+.margin-modal-label {
+	margin-top: 5px;
+}
+
+.pull-right {
+	float: right;
+}
+
+.reply-box {
+	width: 100%;
+}
+
+.profile-pic {
+	width: 70px;
+	height: 70px;
+}
