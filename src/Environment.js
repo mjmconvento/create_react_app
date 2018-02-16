@@ -1,3 +1,5 @@
+// import { SubscriptionClient } from 'subscriptions-transport-ws';
+
 const { Environment, Network, RecordSource, Store } = require("relay-runtime");
 
 function fetchQuery(operation, variables, cacheConfig, uploadables) {
@@ -34,9 +36,9 @@ function fetchQuery(operation, variables, cacheConfig, uploadables) {
 
   // console.log(request);
 
-  return fetch("http://127.0.0.1:5000/graphql", request).then(response => {
-    return response.json();
-  });
+  // return fetch("http://127.0.0.1:5000/graphql", request).then(response => {
+  //   return response.json();
+  // });
 
   // return fetch('http://127.0.0.1:5000/graphql', {
   //     method: 'POST',
@@ -55,7 +57,19 @@ function fetchQuery(operation, variables, cacheConfig, uploadables) {
   // })
 }
 
-const network = Network.create(fetchQuery);
+const setupSubscription = (config, variables, cacheConfig, observer) => {
+  const query = config.text;
+
+  const subscriptionClient = new SubscriptionClient(
+    'wss://subscriptions.us-west-2.graph.cool/v1/cj5zkeqs96v0u01047kxj21wg',
+    { reconnect: true },
+  );
+  subscriptionClient.subscribe({ query, variables }, (error, result) => {
+    observer.onNext({ data: result });
+  });
+};
+
+const network = Network.create(fetchQuery, setupSubscription);
 
 const source = new RecordSource();
 const store = new Store(source);

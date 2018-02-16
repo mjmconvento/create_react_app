@@ -28,9 +28,9 @@ class ModalUpload extends Component {
     ];
 
     return (
-      <Modal trigger={<u className="pointer">Upload report</u>}>
+      <Modal trigger={<u className="pointer">Upload report</u>} closeIcon={true}>
         <Modal.Header>Upload Report - Texas Nursing Home</Modal.Header>
-        <Modal.Content>
+        <Modal.Content >
           <ModalDropzone />
 
           <Table celled padded>
@@ -82,8 +82,10 @@ class ModalUpload extends Component {
               ))}
             </Table.Body>
           </Table>
-          <Button positive>Ok</Button>
-          <Button negative>Cancel</Button>
+          
+          <Button className="pull-right" negative>Cancel</Button>
+          <Button className="pull-right" positive style={{ 'marginBottom': '20px' }}>Ok</Button>
+
         </Modal.Content>
       </Modal>
     );
