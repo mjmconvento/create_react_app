@@ -13,7 +13,7 @@ class CommentSample extends Component {
           <Comment>
             <Comment.Avatar src={avatar1} />
             <Comment.Content>
-              <Comment.Author as="a">Elliot Fu</Comment.Author>
+              <Comment.Author as="a">Full Service Client</Comment.Author>
               <Comment.Metadata>
                 <div>5 days ago</div>
               </Comment.Metadata>
@@ -28,7 +28,7 @@ class CommentSample extends Component {
               <Comment>
                 <Comment.Avatar src={avatar3} />
                 <Comment.Content>
-                  <Comment.Author as="a">Jenny Hess</Comment.Author>
+                  <Comment.Author as="a">SV Admin</Comment.Author>
                   <Comment.Metadata>
                     <div>4 days ago</div>
                   </Comment.Metadata>
@@ -47,7 +47,7 @@ class CommentSample extends Component {
           <Comment>
             <Comment.Avatar src={avatar1} />
             <Comment.Content>
-              <Comment.Author as="a">Elliot Fu</Comment.Author>
+              <Comment.Author as="a">Full Service Client</Comment.Author>
               <Comment.Metadata>
                 <div>Yesterday at 12:30AM</div>
               </Comment.Metadata>

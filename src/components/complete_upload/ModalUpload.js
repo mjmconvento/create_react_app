@@ -103,7 +103,6 @@ class ModalUpload extends Component {
                                       <div>
                                         Status:
                                         <span className="text-blue">
-                                          {" "}
                                           Draft
                                         </span>
                                       </div>
@@ -118,7 +117,6 @@ class ModalUpload extends Component {
                                       <div>
                                         Status:
                                         <span className="text-green">
-                                          {" "}
                                           Sent to client
                                         </span>
                                       </div>
@@ -143,9 +141,10 @@ class ModalUpload extends Component {
                           <Accordion.Content
                             active={activeIndex === data_node.id}
                           >
-                            <div
-                              style={{ marginLeft: '70px', marginTop: '20px' }}
-                            >
+
+                          {!data_node.is_draft ? (
+
+                            <div style={{ marginLeft: '70px', marginTop: '20px' }}>
                               <CommentSample />
 
                               <Form style={{ marginTop: '20px', width: '85%' }}>
@@ -165,6 +164,10 @@ class ModalUpload extends Component {
                                 </div>
                               </Form>
                             </div>
+
+                          ) : (
+                            <div></div>
+                          )}
                           </Accordion.Content>
                         </div>
                       </Accordion>

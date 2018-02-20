@@ -8,10 +8,11 @@ class CompleteUpload extends React.Component {
   render() {
     return (
       <div>
+      
+              <h1>Streamline Verify</h1>
         <Grid celled stackable columns={2}>
           <Grid.Row>
             <Grid.Column width={10}>
-              <h1>Streamline Verify</h1>
               <FullClient />
             </Grid.Column>
             <Grid.Column width={6}>
