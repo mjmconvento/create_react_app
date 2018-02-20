@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import { Grid, Search, Dropdown } from "semantic-ui-react";
 import InboxDataItem from './InboxDataItem'
 import { graphql, createRefetchContainer } from "react-relay";
+import NewMessageSubscription from '../subscriptions/NewMessageSubscription'
+
 
 class InboxData extends Component {
+
+  // componentDidMount() {
+  //   NewMessageSubscription()
+  // }
 
   render() {
 

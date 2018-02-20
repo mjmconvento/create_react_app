@@ -1,6 +1,7 @@
 schema {
   query: Query
   mutation: MyMutations
+  subscription: Subscription
 }
 
 type changeUsername {
@@ -104,6 +105,10 @@ type Query {
   allPosts(before: String, after: String, first: Int, last: Int): PostsConnection
   hello(name: String = "stranger", age: Int): String
   allMessages(likeMessage: String, limit: Int): [Messages]
+}
+
+type Subscription {
+  posts(ok: Boolean, before: String, after: String, first: Int, last: Int): PostsConnection
 }
 
 scalar Upload
