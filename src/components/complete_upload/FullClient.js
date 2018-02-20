@@ -103,20 +103,18 @@ class FullClient extends Component {
       },
     ];
 
-
-
-
     return (
-      <Accordion>
+      <Accordion styled style={{ width: '100%' }}>
         {data.map(data_node => (
           <div key={data_node.id}>
             <Accordion.Title
               active={activeIndex === data_node.index}
               index={data_node.index}
               onClick={this.handleClick}
+              style={{ backgroundColor: 'lightgrey' }}
             >
               <Icon name="dropdown" />
-              {data_node.title}
+              <strong>{data_node.title}</strong>
             </Accordion.Title>
 
             <Accordion.Content active={activeIndex === data_node.index}>
@@ -131,7 +129,7 @@ class FullClient extends Component {
                               <Image style={{ width: '70px', height: '65px' }} src={data_content.logo} />
                             </Grid.Column>
                             <Grid.Column width={11}>
-                              <div>{data_content.client_name}</div>
+                              <div><strong>{data_content.client_name}</strong></div>
                               <div className="last-activity">
                                 Last Activity: {data_content.last_activity}
                               </div>
@@ -143,9 +141,6 @@ class FullClient extends Component {
                             <Grid.Column width={3}>
                               <Icon name="folder open" size="big" color="grey" className="pointer" />
                               <ModalMessage />
-
-
-
                             </Grid.Column>
                           </Grid.Row>
                         </Grid>
