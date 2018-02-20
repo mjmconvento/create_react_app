@@ -4,8 +4,7 @@ import {
   Modal,
   Button,
   TextArea,
-  Form,
-  Comment
+  Form
 } from "semantic-ui-react";
 import CommentSample from "./CommentSample";
 

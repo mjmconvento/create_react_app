@@ -10,6 +10,7 @@ import green_status from './images/green.png';
 import yellow_status from './images/yellow.png';
 import ModalUpload from './ModalUpload';
 import ModalMessage from './ModalMessage';
+import ModalClientUpload from './ModalClientUpload';
 
 class FullClient extends Component {
   state = { activeIndex: 0 };
@@ -139,7 +140,9 @@ class FullClient extends Component {
                               </div>
                             </Grid.Column>
                             <Grid.Column width={3}>
-                              <Icon name="folder open" size="big" color="grey" className="pointer" />
+                              <ModalClientUpload />
+
+                              
                               <ModalMessage />
                             </Grid.Column>
                           </Grid.Row>

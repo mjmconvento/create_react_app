@@ -1,4 +1,4 @@
-import { SubscriptionClient } from 'subscriptions-transport-ws';
+// import { SubscriptionClient } from 'subscriptions-transport-ws';
 const { Environment, Network, RecordSource, Store } = require("relay-runtime");
 
 function fetchQuery(operation, variables, cacheConfig, uploadables) {
@@ -58,17 +58,17 @@ function fetchQuery(operation, variables, cacheConfig, uploadables) {
 }
 
 
-const setupSubscription = (config, variables, cacheConfig, observer) => {
-  const query = config.text;
+// const setupSubscription = (config, variables, cacheConfig, observer) => {
+//   const query = config.text;
 
-  const subscriptionClient = new SubscriptionClient(
-    'ws://0.0.0.0:7000/socket',
-    { reconnect: true },
-  );
-  subscriptionClient.subscribe({ query, variables }, (error, result) => {
-    observer.onNext({ data: result });
-  });
-};
+//   const subscriptionClient = new SubscriptionClient(
+//     'ws://0.0.0.0:7000/socket',
+//     { reconnect: true },
+//   );
+//   subscriptionClient.subscribe({ query, variables }, (error, result) => {
+//     observer.onNext({ data: result });
+//   });
+// };
 
 const network = Network.create(fetchQuery);
 

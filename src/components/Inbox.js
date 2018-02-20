@@ -16,7 +16,7 @@ class Inbox extends Component {
   render() {
     return (
       <div>
-        <div>My Inbox</div>
+        <div>Notifications</div>
         <br />
         <div>
           <QueryRenderer
