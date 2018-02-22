@@ -3,8 +3,8 @@ import App from "./App";
 import CreatePost from "./components/CreatePost";
 import FullClient from "./components/complete_upload/FullClient";
 import Upload from "./components/Upload";
-import Topbar from "./template/Topbar";
-import Navbar from "./template/Navbar";
+import Topbar from "./components/template/Topbar";
+import Navbar from "./components/template/Navbar";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
@@ -23,7 +23,7 @@ render(
         </Grid.Column>
 
         <Grid.Column width={9}>
-          <Router basename={'dashboard'}>
+          <Router>
             <Switch>
               <Route exact path="/" component={App} />
               <Route path="/create" component={CreatePost} />

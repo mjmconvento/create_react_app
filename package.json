@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "moment": "^2.20.1",
+    "node-sass-chokidar": "^0.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-dropzone": "^4.2.7",
@@ -20,7 +21,8 @@
     "build": "node ./setup && react-scripts build",
     "test": "node ./setup && react-scripts test --env=jsdom",
     "start": "node ./setup && react-scripts start",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
+    "build-css": "node-sass-chokidar src/ -o src/**/css_sample"
   },
   "devDependencies": {
     "babel-plugin-relay": "^1.4.1",

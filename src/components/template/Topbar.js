@@ -13,6 +13,7 @@ class Topbar extends React.Component {
             src={logo}
             className="sv-logo"
           />
+
           <Icon
             name="power"
             className="topbar-icon"
