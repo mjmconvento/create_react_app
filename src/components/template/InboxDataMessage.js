@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import { Icon, Grid } from "semantic-ui-react";
-import { graphql, createFragmentContainer } from "react-relay";
-import Moment from "react-moment";
+import React, { Component } from 'react';
+import { Icon, Grid } from 'semantic-ui-react';
+import { graphql, createFragmentContainer } from 'react-relay';
+import Moment from 'react-moment';
 
-class InboxDataItem extends Component {
+class InboxDataMessage extends Component {
   render() {
-    // console.log(this.props)
     return (
       <Grid key={this.props.node.id}>
         <Grid.Row>
@@ -43,9 +42,9 @@ class InboxDataItem extends Component {
 
 
 export default createFragmentContainer(
-  InboxDataItem,
+  InboxDataMessage,
   graphql`
-    fragment InboxDataItem_node on Messages {
+    fragment InboxDataMessage_node on Messages {
       id
       message
     }

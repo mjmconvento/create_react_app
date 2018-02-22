@@ -8,7 +8,7 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type InboxDataItem_node = {|
+export type InboxDataMessage_node = {|
   +id: string;
   +message: ?string;
 |};
@@ -19,7 +19,7 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "InboxDataItem_node",
+  "name": "InboxDataMessage_node",
   "selections": [
     {
       "kind": "ScalarField",

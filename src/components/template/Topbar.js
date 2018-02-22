@@ -1,7 +1,6 @@
-import React from "react";
-import { Image, Icon } from "semantic-ui-react";
-import logo from "./images/logo-cropped.png";
-import './css/global.css';
+import React from 'react';
+import { Image, Icon } from 'semantic-ui-react';
+import logo from './images/logo-cropped.png';
 import './css/topbar.css';
 
 class Topbar extends React.Component {

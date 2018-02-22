@@ -19,3 +19,10 @@ gulp.task('sass', function () {
 		return  rest + '/../css'
     }));
 });
+
+
+// always run sudo when using watch
+gulp.task('watch', function(){
+	gulp.watch('./src/**/*.scss', ['sass']); 
+})
+

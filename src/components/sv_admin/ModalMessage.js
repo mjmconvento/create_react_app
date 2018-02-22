@@ -1,12 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Icon,
   Modal,
   Button,
   TextArea,
   Form
-} from "semantic-ui-react";
-import CommentSample from "./CommentSample";
+} from 'semantic-ui-react';
+import CommentSample from './CommentSample';
+import './css/modal_message.css'
 
 class ModalMessage extends Component {
   state = { modalOpen: false }
@@ -24,9 +25,9 @@ class ModalMessage extends Component {
         <Modal.Content>
           <CommentSample />
 
-          <Form style={{ marginTop: '20px' }}>
+          <Form id="modal_message_form">
             <TextArea rows="2" placeholder="..." />
-            <div style={{ marginTop: '10px', marginBottom: '35px' }}>
+            <div className="modal-message-btn-wrapper">
 
               <Button
                 negative
@@ -40,8 +41,7 @@ class ModalMessage extends Component {
                 positive
                 content="Reply"
                 size="small"
-                className="pull-right"
-                style={{ marginRight: '5px' }}
+                className="pull-right close-btn"
               />
 
             </div>

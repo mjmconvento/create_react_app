@@ -78,7 +78,7 @@ const fragment /*: ConcreteFragment*/ = {
         },
         {
           "kind": "FragmentSpread",
-          "name": "InboxDataItem_node",
+          "name": "InboxDataMessage_node",
           "args": null
         }
       ],

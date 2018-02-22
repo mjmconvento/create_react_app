@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Grid, Search, Dropdown } from "semantic-ui-react";
-import InboxDataItem from './InboxDataItem'
-import { graphql, createRefetchContainer } from "react-relay";
+import React, { Component } from 'react';
+import { Grid, Search, Dropdown } from 'semantic-ui-react';
+import InboxDataMessage from './InboxDataMessage'
+import { graphql, createRefetchContainer } from 'react-relay';
 // import NewMessageSubscription from '../subscriptions/NewMessageSubscription'
 
 
@@ -42,7 +42,7 @@ class InboxData extends Component {
         </Grid>
         
         {this.props.messages.allMessages.map(( node ) => (
-          <InboxDataItem key={node.id} node={node} />
+          <InboxDataMessage key={node.id} node={node} />
         ))}
 
       </div>
@@ -63,9 +63,7 @@ class InboxData extends Component {
 
     }
   }
-
 }
-
 
 export default createRefetchContainer(InboxData, graphql`
   fragment InboxData_messages on Query @argumentDefinitions(
@@ -75,7 +73,7 @@ export default createRefetchContainer(InboxData, graphql`
     allMessages(likeMessage: $like_message, limit: $limit) {
       id
       message
-      ...InboxDataItem_node
+      ...InboxDataMessage_node
     }
 
   }
@@ -85,7 +83,7 @@ export default createRefetchContainer(InboxData, graphql`
       allMessages(likeMessage: $like_message, limit: $limit) {
         id
         message
-        ...InboxDataItem_node
+        ...InboxDataMessage_node
       }
     }
 `);

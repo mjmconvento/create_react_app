@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Grid, Dimmer, Loader } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Grid, Dimmer, Loader } from 'semantic-ui-react';
 import InboxData from './InboxData'
-import { QueryRenderer, graphql } from "react-relay";
-import environment from "../Environment";
+import { QueryRenderer, graphql } from 'react-relay';
+import environment from '../../Environment';
 
 const query_limit = 3;
 const InboxDataQuery = graphql`
@@ -50,7 +50,6 @@ class Inbox extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-
 
         </div>
       </div>

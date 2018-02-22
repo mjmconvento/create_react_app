@@ -1,16 +1,18 @@
-import React from "react";
-import App from "./App";
-import CreatePost from "./components/CreatePost";
-import FullClient from "./components/complete_upload/FullClient";
-import Upload from "./components/Upload";
-import Topbar from "./components/template/Topbar";
-import Navbar from "./components/template/Navbar";
-import { render } from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import registerServiceWorker from "./registerServiceWorker";
-import "./semantic/dist/semantic.min.css";
-import { Grid } from "semantic-ui-react";
-import Inbox from "./components/Inbox";
+import React from 'react';
+import App from './App';
+import CreatePost from './components/CreatePost';
+import SvAdmin from './components/sv_admin/SvAdmin';
+import Upload from './components/Upload';
+import Topbar from './components/template/Topbar';
+import Navbar from './components/template/Navbar';
+import { render } from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import registerServiceWorker from './registerServiceWorker';
+import { Grid } from 'semantic-ui-react';
+import Inbox from './components/template/Inbox';
+import './semantic/dist/semantic.min.css';
+import './components/template/css/global.css';
+
 
 render(
   <div>
@@ -28,7 +30,7 @@ render(
               <Route exact path="/" component={App} />
               <Route path="/create" component={CreatePost} />
               <Route path="/upload" component={Upload} />
-              <Route path="/sv_admin" component={FullClient} />
+              <Route path="/sv_admin" component={SvAdmin} />
               <Route path="*" render={() => <h1>Not found</h1>} />
             </Switch>
           </Router>

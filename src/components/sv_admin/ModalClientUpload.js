@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Icon,
   Grid,
@@ -9,9 +9,10 @@ import {
   Accordion,
   Form,
   TextArea
-} from "semantic-ui-react";
-import xls_image from "./images/xls.png";
-import CommentSample from "./CommentSample";
+} from 'semantic-ui-react';
+import xls_image from './images/xls.png';
+import CommentSample from './CommentSample';
+import './css/modal_client_upload.css'
 
 class ModalClientUpload extends Component {
   state = {
@@ -70,7 +71,7 @@ class ModalClientUpload extends Component {
             <Table
               padded
               basic="very"
-              style={{ marginLeft: '5%', marginRight: '5%' }}
+              id="modal_client_upload_table"
             >
               <Table.Body>
                 {data.map(data_node => (

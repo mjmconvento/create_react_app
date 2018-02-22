@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Icon,
   Grid,
@@ -9,10 +9,11 @@ import {
   Accordion,
   Form,
   TextArea
-} from "semantic-ui-react";
-import xls_image from "./images/xls.png";
-import ModalDropzone from "./ModalDropzone";
-import CommentSample from "./CommentSample";
+} from 'semantic-ui-react';
+import xls_image from './images/xls.png';
+import ModalDropzone from './ModalDropzone';
+import CommentSample from './CommentSample';
+import './css/modal_upload.css'
 
 class ModalUpload extends Component {
   state = {
@@ -73,13 +74,13 @@ class ModalUpload extends Component {
             <Table
               padded
               basic="very"
-              style={{ marginLeft: '5%', marginRight: '5%' }}
+              id="modal_file_table"
             >
               <Table.Body>
                 {data.map(data_node => (
-                  <Table.Row key={data_node.id} style={{ width: '100%' }}>
+                  <Table.Row key={data_node.id} className="full-width">
                     <Table.Cell>
-                      <Accordion style={{ width: '100%' }}>
+                      <Accordion className="full-width">
                         <div key={data_node.id}>
                           <Accordion.Title
                             active={activeIndex === data_node.id}
@@ -144,17 +145,12 @@ class ModalUpload extends Component {
 
                           {!data_node.is_draft ? (
 
-                            <div style={{ marginLeft: '70px', marginTop: '20px' }}>
+                            <div className="comment-wrapper">
                               <CommentSample />
 
-                              <Form style={{ marginTop: '20px', width: '85%' }}>
+                              <Form className="comment-form">
                                 <TextArea rows="2" placeholder="..." />
-                                <div
-                                  style={{
-                                    marginTop: '10px',
-                                    marginBottom: '35px'
-                                  }}
-                                >
+                                <div className="button-wrapper">
                                   <Button
                                     positive
                                     content="Reply"
@@ -178,9 +174,8 @@ class ModalUpload extends Component {
                 <Table.Row>
                   <Table.Cell>
                     <Button
-                      className="pull-right"
+                      className="pull-right modal-close-button-wrapper"
                       negative
-                      style={{ marginTop: '20px', marginRight: '6%' }}
                       onClick={this.handleClose}
                     >
                       Close

@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {
-  Accordion,
-  Icon,
-  Table,
-  Grid,
-  Image,
-} from 'semantic-ui-react';
+import { Accordion, Icon, Table, Grid, Image } from 'semantic-ui-react';
 import green_status from './images/green.png';
 import yellow_status from './images/yellow.png';
 import ModalUpload from './ModalUpload';
 import ModalMessage from './ModalMessage';
 import ModalClientUpload from './ModalClientUpload';
+import './css/sv_admin.css';
 
 class FullClient extends Component {
   state = { activeIndex: 0 };
@@ -25,94 +20,17 @@ class FullClient extends Component {
 
   render() {
     const { activeIndex } = this.state;
-
-    const data = [
-      {
-        id: 1,
-        index: 0,
-        title: 'Full service client 01 lists',
-        data_table_content: [
-          {
-            id: 1,
-            client_name: 'Texas Nursing Home',
-            last_activity: '01/01/2018',
-            logo: green_status,
-          },
-          {
-            id: 2,
-            client_name: 'Medical company',
-            last_activity: '01/01/2018',
-            logo: yellow_status,
-          },
-          {
-            id: 3,
-            client_name: 'Branx Hospital',
-            last_activity: '10/01/2017',
-            logo: yellow_status,
-          }
-        ]
-      },
-      {
-        id: 2,
-        index: 1,
-        title: "Full service client 02 lists",
-        data_table_content: [
-          {
-            id: 1,
-            client_name: 'Texas Nursing Home',
-            last_activity: '01/01/2018',
-            logo: green_status,
-          },
-          {
-            id: 2,
-            client_name: 'Medical company',
-            last_activity: '01/01/2018',
-            logo: green_status,
-          },
-          {
-            id: 3,
-            client_name: 'Branx Hospital',
-            last_activity: '10/01/2017',
-            logo: green_status,
-          }
-        ]
-      },
-      {
-        id: 3,
-        index: 2,
-        title: "Full service client 03 lists",
-        data_table_content: [
-          {
-            id: 1,
-            client_name: 'Texas Nursing Home',
-            last_activity: '01/01/2018',
-            logo: green_status,
-          },
-          {
-            id: 2,
-            client_name: 'Medical company',
-            last_activity: '01/01/2018',
-            logo: yellow_status,
-          },
-          {
-            id: 3,
-            client_name: 'Branx Hospital',
-            last_activity: '10/01/2017',
-            logo: green_status,
-          }
-        ]
-      },
-    ];
+    const data = require("./data/full_service_clients_data");
 
     return (
-      <Accordion styled style={{ width: '100%' }}>
+      <Accordion styled className="full-width" id="client_accordion">
         {data.map(data_node => (
           <div key={data_node.id}>
             <Accordion.Title
               active={activeIndex === data_node.index}
               index={data_node.index}
               onClick={this.handleClick}
-              style={{ backgroundColor: 'lightgrey' }}
+              className="accordion-title"
             >
               <Icon name="dropdown" />
               <strong>{data_node.title}</strong>
@@ -127,10 +45,22 @@ class FullClient extends Component {
                         <Grid>
                           <Grid.Row>
                             <Grid.Column width={2}>
-                              <Image style={{ width: '100%', height: 'auto' }} src={data_content.logo} />
+                              {data_content.status === "yellow_status" ? (
+                                <Image
+                                  className="status-image"
+                                  src={yellow_status}
+                                />
+                              ) : (
+                                <Image
+                                  className="status-image"
+                                  src={green_status}
+                                />
+                              )}
                             </Grid.Column>
                             <Grid.Column width={11}>
-                              <div><strong>{data_content.client_name}</strong></div>
+                              <div>
+                                <strong>{data_content.client_name}</strong>
+                              </div>
                               <div className="last-activity">
                                 Last Activity: {data_content.last_activity}
                               </div>
@@ -141,8 +71,6 @@ class FullClient extends Component {
                             </Grid.Column>
                             <Grid.Column width={3}>
                               <ModalClientUpload />
-
-                              
                               <ModalMessage />
                             </Grid.Column>
                           </Grid.Row>
@@ -155,8 +83,6 @@ class FullClient extends Component {
             </Accordion.Content>
           </div>
         ))}
-
-
       </Accordion>
     );
   }

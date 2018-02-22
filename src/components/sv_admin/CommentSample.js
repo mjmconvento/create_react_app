@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Comment } from "semantic-ui-react";
-import avatar1 from "./images/avatar1.png";
-import avatar3 from "./images/avatar3.png";
+import React, { Component } from 'react';
+import { Comment } from 'semantic-ui-react';
+import avatar1 from './images/avatar1.png';
+import avatar3 from './images/avatar3.png';
 
 class CommentSample extends Component {
   state = { modalOpen: false };

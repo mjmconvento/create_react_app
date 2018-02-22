@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { Button, Progress } from "semantic-ui-react";
-import Dropzone from "react-dropzone";
-import UploadFileMutation from "../../mutations/UploadFileMutation";
+import React, { Component } from 'react';
+import { Button, Progress } from 'semantic-ui-react';
+import Dropzone from 'react-dropzone';
+import UploadFileMutation from '../../mutations/UploadFileMutation';
+import './css/dropzone.css'
 
 class ModalDropzone extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class ModalDropzone extends Component {
   onDrop(files) {
     UploadFileMutation(files[0], () => console.log("Mutation Completed"));
 
-    // transfer this after upload or mutation completed
+    // TODO: transfer this after upload or mutation completed
     this.setState({
       percent: 100,
       uploaded: true,
