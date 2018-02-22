@@ -127,7 +127,7 @@ class FullClient extends Component {
                         <Grid>
                           <Grid.Row>
                             <Grid.Column width={2}>
-                              <Image style={{ width: '70px', height: '65px' }} src={data_content.logo} />
+                              <Image style={{ width: '100%', height: 'auto' }} src={data_content.logo} />
                             </Grid.Column>
                             <Grid.Column width={11}>
                               <div><strong>{data_content.client_name}</strong></div>

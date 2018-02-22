@@ -12,7 +12,7 @@ class InboxDataItem extends Component {
           <Grid.Column width={1}>
             <Icon name="reply" />
           </Grid.Column>
-          <Grid.Column width={15}>
+          <Grid.Column width={12}>
             <u>
               <Moment format="MM-DD-YYYY">{this.props.node.createdAt}</Moment>
             </u>
@@ -21,7 +21,7 @@ class InboxDataItem extends Component {
         <Grid.Row>
           <Grid.Column width={1} />
           <Grid.Column width={12}>{this.props.node.message}</Grid.Column>
-          <Grid.Column width={3}>
+          <Grid.Column width={1}>
             <strong>...
             </strong>
           </Grid.Column>

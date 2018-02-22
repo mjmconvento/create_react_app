@@ -30,10 +30,12 @@ class InboxData extends Component {
       <div>
         <Grid>
           <Grid.Row>
-            <Grid.Column width={8}>
+            <Grid.Column width={6}>
               <Search showNoResults={false} onKeyPress={e => this._refetch(e)} />
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column width={3}>
+            </Grid.Column>
+            <Grid.Column width={7}>
               <Dropdown placeholder="-- Select --" fluid selection options={selectOptions} />
             </Grid.Column>
           </Grid.Row>

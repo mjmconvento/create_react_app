@@ -11,7 +11,6 @@ import {
   TextArea
 } from "semantic-ui-react";
 import xls_image from "./images/xls.png";
-import ModalDropzone from "./ModalDropzone";
 import CommentSample from "./CommentSample";
 
 class ModalClientUpload extends Component {
