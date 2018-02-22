@@ -1561,7 +1561,7 @@ chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^0.5.0:
+chalk@^0.5.0, chalk@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-0.5.1.tgz#663b3a648b68b55d04690d49167aa837858f2174"
   dependencies:
@@ -3701,6 +3701,13 @@ gulp-flatten@^0.3.1:
     gulp-util "^3.0.7"
     through2 "^2.0.0"
 
+gulp-flatten@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/gulp-flatten/-/gulp-flatten-0.4.0.tgz#d9ac819416c30fd5dfb3dea9da79c83a1bcd61d1"
+  dependencies:
+    plugin-error "^0.1.2"
+    through2 "^2.0.0"
+
 gulp-header@^1.8.9:
   version "1.8.9"
   resolved "https://registry.yarnpkg.com/gulp-header/-/gulp-header-1.8.9.tgz#c9f10fee0632d81e939789c6ecf45a151bf3098b"
@@ -3746,6 +3753,15 @@ gulp-less@^3.3.2:
     replace-ext "^1.0.0"
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
+
+gulp-logger@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gulp-logger/-/gulp-logger-0.0.2.tgz#0ec000bf91e8cae424305da0f9057af3158332b0"
+  dependencies:
+    chalk "^0.5.1"
+    gulp-util "^3.0.0"
+    rename "^0.2.3"
+    through2 "^0.5.1"
 
 gulp-match@^1.0.3:
   version "1.0.3"
@@ -3802,6 +3818,16 @@ gulp-rtlcss@^1.0.0:
     through2 "^2.0.3"
     vinyl-sourcemaps-apply "^0.2.1"
 
+gulp-sass@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-3.1.0.tgz#53dc4b68a1f5ddfe4424ab4c247655269a8b74b7"
+  dependencies:
+    gulp-util "^3.0"
+    lodash.clonedeep "^4.3.2"
+    node-sass "^4.2.0"
+    through2 "^2.0.0"
+    vinyl-sourcemaps-apply "^0.2.0"
+
 gulp-uglify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/gulp-uglify/-/gulp-uglify-3.0.0.tgz#0df0331d72a0d302e3e37e109485dddf33c6d1ca"
@@ -3814,7 +3840,7 @@ gulp-uglify@^3.0.0:
     uglify-js "^3.0.5"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@*, gulp-util@^3.0.0, gulp-util@^3.0.6, gulp-util@^3.0.7, gulp-util@^3.0.8, gulp-util@~3.0.0, gulp-util@~3.0.1:
+gulp-util@*, gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.6, gulp-util@^3.0.7, gulp-util@^3.0.8, gulp-util@~3.0.0, gulp-util@~3.0.1:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -6034,7 +6060,7 @@ node-sass-chokidar@^0.0.3:
     sass-graph "^2.1.1"
     stdout-stream "^1.4.0"
 
-node-sass@^4.5.3:
+node-sass@^4.2.0, node-sass@^4.5.3:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.7.2.tgz#9366778ba1469eb01438a9e8592f4262bcb6794e"
   dependencies:
@@ -7408,6 +7434,10 @@ remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
 
+rename@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/rename/-/rename-0.2.3.tgz#7837e2c77cd60a149c3da6d15e0c8827bbd6a18a"
+
 renderkid@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/renderkid/-/renderkid-2.0.1.tgz#898cabfc8bede4b7b91135a3ffd323e58c0db319"
@@ -8473,7 +8503,7 @@ through2@2.0.3, through2@^2.0.0, through2@^2.0.1, through2@^2.0.3:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-through2@^0.5.0, through2@~0.5.0:
+through2@^0.5.0, through2@^0.5.1, through2@~0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-0.5.1.tgz#dfdd012eb9c700e2323fd334f38ac622ab372da7"
   dependencies:
