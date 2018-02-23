@@ -5,8 +5,9 @@
 
 #client_accordion {
     width: 100%;
+
+    .accordion-title {
+	    background-color: lightgray;
+    }
 }
 
-#client_accordion .accordion-title {
-    background-color: lightgray;
-}

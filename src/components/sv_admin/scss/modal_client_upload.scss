@@ -2,3 +2,27 @@
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+#modal_close_btn {
+	margin-top: 20px; 
+	margin-right: 6%;
+}
+
+.comment-wrapper {
+	margin-left: 70px; 
+	margin-top: 20px;
+
+	.comment-form {
+		margin-top: 20px; 
+		width: 85%;
+
+		div {
+            margin-top: 10px;
+            margin-bottom: 35px;			
+		}
+	}
+}
+
+i.comments.comment-icon {
+	margin-right: 30px;
+}

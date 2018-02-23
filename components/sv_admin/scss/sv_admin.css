@@ -1,0 +1,8 @@
+.status-image {
+  width: 100%;
+  height: auto; }
+
+#client_accordion {
+  width: 100%; }
+  #client_accordion .accordion-title {
+    background-color: lightgray; }

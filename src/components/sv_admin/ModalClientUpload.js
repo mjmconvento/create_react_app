@@ -32,29 +32,7 @@ class ModalClientUpload extends Component {
 
 
   render() {
-
-    const data = [
-      {
-        id: 1,
-        filename: "2017_November_Monthly_Reports.xlsv",
-        date_uploaded: "12/05/2017 10:21 am",
-        is_draft: false
-      },
-      {
-        id: 2,
-        filename: "2017_November_Monthly_Reports.xlsv",
-        date_uploaded: "12/04/2017 1:32 pm",
-        is_draft: true
-      },
-
-      {
-        id: 3,
-        filename: "2017_November_Monthly_Reports.xlsv",
-        date_uploaded: "12/04/2017 1:32 pm",
-        is_draft: true
-      }
-    ];
-
+    const data = require("./data/modal_client_upload_data");
     const { activeIndex } = this.state;
 
 
@@ -68,16 +46,12 @@ class ModalClientUpload extends Component {
         <Modal.Header>Texas Nursing Home</Modal.Header>
         <Modal.Content>
 
-            <Table
-              padded
-              basic="very"
-              id="modal_client_upload_table"
-            >
+            <Table padded basic="very" id="modal_client_upload_table">
               <Table.Body>
                 {data.map(data_node => (
-                  <Table.Row key={data_node.id} style={{ width: '100%' }}>
+                  <Table.Row key={data_node.id} className="full-width">
                     <Table.Cell>
-                      <Accordion style={{ width: '100%' }}>
+                      <Accordion className="full-width">
                         <div key={data_node.id}>
                           <Accordion.Title
                             active={activeIndex === data_node.id}
@@ -113,14 +87,13 @@ class ModalClientUpload extends Component {
 
                                         <Icon
                                           name="comments"
-                                          className="pointer"
+                                          className="pointer comment-icon"
                                           size="big"
                                           color="blue"
                                           onClick={this.handleOpen}
-                                          style={{ marginRight: '30px' }}
                                         />
-                                        <Icon name="check circle" size="big" style={{ color: 'green' }} />
-                                        <Icon name="remove circle" size="big" style={{ color: 'red' }} />
+                                        <Icon name="check circle" size="big" className="text-green" />
+                                        <Icon name="remove circle" size="big" className="text-red" />
 
 
                                       </div>
@@ -131,23 +104,16 @@ class ModalClientUpload extends Component {
                             </Grid>
                           </Accordion.Title>
 
-                          <Accordion.Content
-                            active={activeIndex === data_node.id}
-                          >
+                          <Accordion.Content active={activeIndex === data_node.id}>
 
                           {!data_node.is_draft ? (
                             <div
-                              style={{ marginLeft: '70px', marginTop: '20px' }}
+                              className="comment-wrapper"                            
                             >
                               <CommentSample />
-                              <Form style={{ marginTop: '20px', width: '85%' }}>
+                              <Form className="comment-form">
                                 <TextArea rows="2" placeholder="..." />
-                                <div
-                                  style={{
-                                    marginTop: '10px',
-                                    marginBottom: '35px'
-                                  }}
-                                >
+                                <div>
                                   <Button
                                     positive
                                     content="Reply"
@@ -172,9 +138,9 @@ class ModalClientUpload extends Component {
                 <Table.Row>
                   <Table.Cell>
                     <Button
+                      id="modal_close_btn"
                       className="pull-right"
                       negative
-                      style={{ marginTop: '20px', marginRight: '6%' }}
                       onClick={this.handleClose}
                     >
                       Close
