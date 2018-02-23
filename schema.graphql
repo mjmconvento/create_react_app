@@ -108,7 +108,7 @@ type Query {
 }
 
 type Subscription {
-  posts(ok: Boolean, before: String, after: String, first: Int, last: Int): PostsConnection
+  allPosts(before: String, after: String, first: Int, last: Int): PostsConnection
 }
 
 scalar Upload

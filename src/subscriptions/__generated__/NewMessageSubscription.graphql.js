@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash df83395b6642584d23bc5171f453dc29
+ * @relayHash 7dd23d5457de5893feac8f6d38c595af
  */
 
 /* eslint-disable */
@@ -11,7 +11,7 @@
 import type {ConcreteBatch} from 'relay-runtime';
 export type NewMessageSubscriptionVariables = {| |};
 export type NewMessageSubscriptionResponse = {|
-  +posts: ?{|
+  +allPosts: ?{|
     +edges: $ReadOnlyArray<?{|
       +node: ?{|
         +id: string;
@@ -24,7 +24,7 @@ export type NewMessageSubscriptionResponse = {|
 
 /*
 subscription NewMessageSubscription {
-  posts {
+  allPosts {
     edges {
       node {
         id
@@ -46,7 +46,7 @@ const batch /*: ConcreteBatch*/ = {
         "alias": null,
         "args": null,
         "concreteType": "PostsConnection",
-        "name": "posts",
+        "name": "allPosts",
         "plural": false,
         "selections": [
           {
@@ -99,7 +99,7 @@ const batch /*: ConcreteBatch*/ = {
         "alias": null,
         "args": null,
         "concreteType": "PostsConnection",
-        "name": "posts",
+        "name": "allPosts",
         "plural": false,
         "selections": [
           {
@@ -136,7 +136,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "subscription NewMessageSubscription {\n  posts {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}\n"
+  "text": "subscription NewMessageSubscription {\n  allPosts {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

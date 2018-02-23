@@ -3,7 +3,7 @@ import environment from '../Environment';
 
 const newMessageSubscription = graphql`
   subscription NewMessageSubscription {
-    posts {
+    allPosts {
       edges {
         node {
           id
@@ -17,6 +17,7 @@ export default () => {
   const subscriptionConfig = {
     subscription: newMessageSubscription,
     variables: {},
+    onCompleted: () => console.log('completed'),
     updater: proxyStore => {
       console.log('subscription successful')
     },
