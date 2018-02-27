@@ -66,21 +66,22 @@ const setupSubscription = (config, variables, cacheConfig, observer) => {
   const query = config.text;
   const { onNext, onError, onCompleted } = observer;
 
-  console.log(onNext);
-  console.log(onError);
-  console.log(onCompleted);
+  // console.log(onNext);
+  // console.log(onError);
+  // console.log(onCompleted);
   // console.log(query);
   // console.log(variables);
   // console.log(cacheConfig);
   // console.log(observer);
 
   const subscriptionClient = new SubscriptionClient(
-    'ws://0.0.0.0:7000/socket',{ 
+    'ws://0.0.0.0:7000/subscription',{ 
       reconnect: true,
       connectionCallback: (error) => {console.log(error)}
     }
   );
 
+  subscriptionClient.unsubscribeAll();
   subscriptionClient.request({ query, variables }).subscribe(onNext, onError, onCompleted);
 };
 

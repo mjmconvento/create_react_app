@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7dd23d5457de5893feac8f6d38c595af
+ * @relayHash 50fda66142d4288b16979b0e12a1475b
  */
 
 /* eslint-disable */
@@ -11,26 +11,14 @@
 import type {ConcreteBatch} from 'relay-runtime';
 export type NewMessageSubscriptionVariables = {| |};
 export type NewMessageSubscriptionResponse = {|
-  +allPosts: ?{|
-    +edges: $ReadOnlyArray<?{|
-      +node: ?{|
-        +id: string;
-      |};
-    |}>;
-  |};
+  +countSeconds: ?number;
 |};
 */
 
 
 /*
 subscription NewMessageSubscription {
-  allPosts {
-    edges {
-      node {
-        id
-      }
-    }
-  }
+  countSeconds(upTo: 5)
 }
 */
 
@@ -42,44 +30,18 @@ const batch /*: ConcreteBatch*/ = {
     "name": "NewMessageSubscription",
     "selections": [
       {
-        "kind": "LinkedField",
+        "kind": "ScalarField",
         "alias": null,
-        "args": null,
-        "concreteType": "PostsConnection",
-        "name": "allPosts",
-        "plural": false,
-        "selections": [
+        "args": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "PostsEdge",
-            "name": "edges",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "Posts",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
+            "kind": "Literal",
+            "name": "upTo",
+            "value": 5,
+            "type": "Int"
           }
         ],
-        "storageKey": null
+        "name": "countSeconds",
+        "storageKey": "countSeconds{\"upTo\":5}"
       }
     ],
     "type": "Subscription"
@@ -95,48 +57,22 @@ const batch /*: ConcreteBatch*/ = {
     "operation": "subscription",
     "selections": [
       {
-        "kind": "LinkedField",
+        "kind": "ScalarField",
         "alias": null,
-        "args": null,
-        "concreteType": "PostsConnection",
-        "name": "allPosts",
-        "plural": false,
-        "selections": [
+        "args": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "PostsEdge",
-            "name": "edges",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "Posts",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
+            "kind": "Literal",
+            "name": "upTo",
+            "value": 5,
+            "type": "Int"
           }
         ],
-        "storageKey": null
+        "name": "countSeconds",
+        "storageKey": "countSeconds{\"upTo\":5}"
       }
     ]
   },
-  "text": "subscription NewMessageSubscription {\n  allPosts {\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}\n"
+  "text": "subscription NewMessageSubscription {\n  countSeconds(upTo: 5)\n}\n"
 };
 
 module.exports = batch;

@@ -8,6 +8,7 @@ import NewMessageSubscription from '../../subscriptions/NewMessageSubscription'
 class InboxData extends Component {
 
   componentDidMount() {
+    console.log('mount')
     NewMessageSubscription()
   }
 

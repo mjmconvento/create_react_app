@@ -47,8 +47,8 @@ type MessagesEdge {
 }
 
 type MyMutations {
-  createUser(username: String, name: String, email: String): createUser
-  createPost(imageUrl: String, description: String): createPost
+  createUser(username: String, email: String, name: String): createUser
+  createPost(description: String, imageUrl: String): createPost
   changeUsername(username: String, email: String): changeUsername
   uploadFile(file: Upload): UploadFile
 }
@@ -94,6 +94,8 @@ type PostsEdge {
 }
 
 type Query {
+  base: String
+
   # The ID of the object
   node(id: ID!): Node
   user(before: String, after: String, first: Int, last: Int): UsersConnection
@@ -104,11 +106,12 @@ type Query {
   allUsers(before: String, after: String, first: Int, last: Int): UsersConnection
   allPosts(before: String, after: String, first: Int, last: Int): PostsConnection
   hello(name: String = "stranger", age: Int): String
-  allMessages(likeMessage: String, limit: Int): [Messages]
+  allMessages(likeMessage: String, limit: Int, before: String, after: String, first: Int, last: Int): MessagesConnection
 }
 
 type Subscription {
-  allPosts(before: String, after: String, first: Int, last: Int): PostsConnection
+  countSeconds(upTo: Int): Float
+  post: Posts
 }
 
 scalar Upload
