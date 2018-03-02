@@ -9,10 +9,15 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type InboxData_messages = {|
-  +allMessages: ?$ReadOnlyArray<?{|
-    +id: string;
-    +message: ?string;
-  |}>;
+  +allMessages: ?{|
+    +edges: $ReadOnlyArray<?{|
+      +node: ?{|
+        +id: string;
+        +message: ?string;
+        +createdAt: ?any;
+      |};
+    |}>;
+  |};
 |};
 */
 
@@ -58,28 +63,57 @@ const fragment /*: ConcreteFragment*/ = {
           "type": "Int"
         }
       ],
-      "concreteType": "Messages",
+      "concreteType": "MessagesConnection",
       "name": "allMessages",
-      "plural": true,
+      "plural": false,
       "selections": [
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
           "args": null,
-          "name": "id",
+          "concreteType": "MessagesEdge",
+          "name": "edges",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "args": null,
+              "concreteType": "Messages",
+              "name": "node",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "id",
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "message",
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "createdAt",
+                  "storageKey": null
+                },
+                {
+                  "kind": "FragmentSpread",
+                  "name": "InboxDataMessage_message",
+                  "args": null
+                }
+              ],
+              "storageKey": null
+            }
+          ],
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "message",
-          "storageKey": null
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "InboxDataMessage_node",
-          "args": null
         }
       ],
       "storageKey": null

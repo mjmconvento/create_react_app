@@ -8,12 +8,10 @@ import NewMessageSubscription from '../../subscriptions/NewMessageSubscription'
 class InboxData extends Component {
 
   componentDidMount() {
-    console.log('mount')
     NewMessageSubscription()
   }
 
   render() {
-
     const selectOptions = [ 
       { 
         key: 1, 
@@ -42,8 +40,8 @@ class InboxData extends Component {
           </Grid.Row>
         </Grid>
         
-        {this.props.messages.allMessages.map(( node ) => (
-          <InboxDataMessage key={node.id} node={node} />
+        {this.props.messages.allMessages.edges.map(( node ) => (
+          <InboxDataMessage key={node.node.__id} message={node.node} />
         ))}
 
       </div>
@@ -72,9 +70,15 @@ export default createRefetchContainer(InboxData, graphql`
   limit: {type: "Int"},
 ){
     allMessages(likeMessage: $like_message, limit: $limit) {
-      id
-      message
-      ...InboxDataMessage_node
+      edges {
+        node {
+          id
+          message
+          createdAt
+          ...InboxDataMessage_message          
+        }
+      }
+
     }
 
   }
@@ -82,9 +86,14 @@ export default createRefetchContainer(InboxData, graphql`
   graphql`
     query InboxDataRefetchQuery($like_message: String, $limit: Int) {
       allMessages(likeMessage: $like_message, limit: $limit) {
-        id
-        message
-        ...InboxDataMessage_node
+        edges {
+          node {
+            id
+            message
+            createdAt
+            ...InboxDataMessage_message          
+          }
+        }
       }
     }
 `);

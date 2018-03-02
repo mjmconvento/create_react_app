@@ -21,6 +21,7 @@ export default () => {
     variables: {'upTo' : 5},
     onCompleted: () => console.log('completed'),
     updater: proxyStore => {
+      console.log(proxyStore)
       console.log('subscription successful')
     },
     onNext: () => console.log('next'),
