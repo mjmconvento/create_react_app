@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 27b9f5324aa62eec71044c84679cde65
+ * @relayHash 386608464ca72713bbf775b93e85ee67
  */
 
 /* eslint-disable */
@@ -8,17 +8,23 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
+type InboxDataMessage_message$ref = any;
+export type InboxDataRefetchQueryVariables = {|
+  like_message?: ?string,
+  limit?: ?number,
+|};
 export type InboxDataRefetchQueryResponse = {|
   +allMessages: ?{|
     +edges: $ReadOnlyArray<?{|
       +node: ?{|
-        +id: string;
-        +message: ?string;
-        +createdAt: ?any;
-      |};
-    |}>;
-  |};
+        +id: string,
+        +message: ?string,
+        +createdAt: ?any,
+        +$fragmentRefs: InboxDataMessage_message$ref,
+      |},
+    |}>,
+  |},
 |};
 */
 
@@ -47,194 +53,157 @@ fragment InboxDataMessage_message on Messages {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "like_message",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "limit",
+    "type": "Int",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "likeMessage",
+    "variableName": "like_message",
+    "type": "String"
+  },
+  {
+    "kind": "Variable",
+    "name": "limit",
+    "variableName": "limit",
+    "type": "Int"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "message",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "createdAt",
+  "args": null,
+  "storageKey": null
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "InboxDataRefetchQuery",
+  "id": null,
+  "text": "query InboxDataRefetchQuery(\n  $like_message: String\n  $limit: Int\n) {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    edges {\n      node {\n        id\n        message\n        createdAt\n        ...InboxDataMessage_message\n      }\n    }\n  }\n}\n\nfragment InboxDataMessage_message on Messages {\n  id\n  message\n  createdAt\n}\n",
+  "metadata": {},
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "like_message",
-        "type": "String",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "limit",
-        "type": "Int",
-        "defaultValue": null
-      }
-    ],
     "kind": "Fragment",
-    "metadata": null,
     "name": "InboxDataRefetchQuery",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "likeMessage",
-            "variableName": "like_message",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "limit",
-            "variableName": "limit",
-            "type": "Int"
-          }
-        ],
-        "concreteType": "MessagesConnection",
         "name": "allMessages",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "MessagesConnection",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "MessagesEdge",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Messages",
-                "name": "node",
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "message",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "createdAt",
-                    "storageKey": null
-                  },
+                  v2,
+                  v3,
+                  v4,
                   {
                     "kind": "FragmentSpread",
                     "name": "InboxDataMessage_message",
                     "args": null
                   }
-                ],
-                "storageKey": null
+                ]
               }
-            ],
-            "storageKey": null
+            ]
           }
-        ],
-        "storageKey": null
+        ]
       }
-    ],
-    "type": "Query"
+    ]
   },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "InboxDataRefetchQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "like_message",
-        "type": "String",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "limit",
-        "type": "Int",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "operation": {
+    "kind": "Operation",
     "name": "InboxDataRefetchQuery",
-    "operation": "query",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "likeMessage",
-            "variableName": "like_message",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "limit",
-            "variableName": "limit",
-            "type": "Int"
-          }
-        ],
-        "concreteType": "MessagesConnection",
         "name": "allMessages",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "MessagesConnection",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "MessagesEdge",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Messages",
-                "name": "node",
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "message",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "createdAt",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
+                  v2,
+                  v3,
+                  v4
+                ]
               }
-            ],
-            "storageKey": null
+            ]
           }
-        ],
-        "storageKey": null
+        ]
       }
     ]
-  },
-  "text": "query InboxDataRefetchQuery(\n  $like_message: String\n  $limit: Int\n) {\n  allMessages(likeMessage: $like_message, limit: $limit) {\n    edges {\n      node {\n        id\n        message\n        createdAt\n        ...InboxDataMessage_message\n      }\n    }\n  }\n}\n\nfragment InboxDataMessage_message on Messages {\n  id\n  message\n  createdAt\n}\n"
+  }
 };
-
-module.exports = batch;
+})();
+(node/*: any*/).hash = 'b2a127f3ffac107dc406bca2efc7bfd5';
+module.exports = node;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 50fda66142d4288b16979b0e12a1475b
+ * @relayHash d030d55e568ef42ac4d685109ed28356
  */
 
 /* eslint-disable */
@@ -8,10 +8,10 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
 export type NewMessageSubscriptionVariables = {| |};
 export type NewMessageSubscriptionResponse = {|
-  +countSeconds: ?number;
+  +countSeconds: ?number,
 |};
 */
 
@@ -22,57 +22,45 @@ subscription NewMessageSubscription {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "NewMessageSubscription",
-    "selections": [
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "countSeconds",
+    "args": [
       {
-        "kind": "ScalarField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "upTo",
-            "value": 5,
-            "type": "Int"
-          }
-        ],
-        "name": "countSeconds",
-        "storageKey": "countSeconds{\"upTo\":5}"
+        "kind": "Literal",
+        "name": "upTo",
+        "value": 5,
+        "type": "Int"
       }
     ],
-    "type": "Subscription"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
+    "storageKey": "countSeconds(upTo:5)"
+  }
+];
+return {
+  "kind": "Request",
+  "operationKind": "subscription",
   "name": "NewMessageSubscription",
-  "query": {
-    "argumentDefinitions": [],
-    "kind": "Root",
+  "id": null,
+  "text": "subscription NewMessageSubscription {\n  countSeconds(upTo: 5)\n}\n",
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
     "name": "NewMessageSubscription",
-    "operation": "subscription",
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "upTo",
-            "value": 5,
-            "type": "Int"
-          }
-        ],
-        "name": "countSeconds",
-        "storageKey": "countSeconds{\"upTo\":5}"
-      }
-    ]
+    "type": "Subscription",
+    "metadata": null,
+    "argumentDefinitions": [],
+    "selections": v0
   },
-  "text": "subscription NewMessageSubscription {\n  countSeconds(upTo: 5)\n}\n"
+  "operation": {
+    "kind": "Operation",
+    "name": "NewMessageSubscription",
+    "argumentDefinitions": [],
+    "selections": v0
+  }
 };
-
-module.exports = batch;
+})();
+(node/*: any*/).hash = 'b147e4fed066160cda0dd77778da5b79';
+module.exports = node;

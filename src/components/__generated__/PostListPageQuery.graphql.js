@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8c9c6de92ec26f80bf6d388f2029599c
+ * @relayHash 52036b57d1d04c661e7dff43feb2f2ec
  */
 
 /* eslint-disable */
@@ -8,17 +8,18 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
+export type PostListPageQueryVariables = {| |};
 export type PostListPageQueryResponse = {|
   +allPosts: ?{|
     +edges: $ReadOnlyArray<?{|
       +node: ?{|
-        +id: string;
-        +description: ?string;
-        +imageUrl: ?string;
-      |};
-    |}>;
-  |};
+        +id: string,
+        +description: ?string,
+        +imageUrl: ?string,
+      |},
+    |}>,
+  |},
 |};
 */
 
@@ -37,137 +38,85 @@ query PostListPageQuery {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "PostListPageQuery",
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "allPosts",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "PostsConnection",
+    "plural": false,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "edges",
+        "storageKey": null,
         "args": null,
-        "concreteType": "PostsConnection",
-        "name": "allPosts",
-        "plural": false,
+        "concreteType": "PostsEdge",
+        "plural": true,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "node",
+            "storageKey": null,
             "args": null,
-            "concreteType": "PostsEdge",
-            "name": "edges",
-            "plural": true,
+            "concreteType": "Posts",
+            "plural": false,
             "selections": [
               {
-                "kind": "LinkedField",
+                "kind": "ScalarField",
                 "alias": null,
+                "name": "id",
                 "args": null,
-                "concreteType": "Posts",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "description",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "imageUrl",
-                    "storageKey": null
-                  }
-                ],
                 "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Query"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "PostListPageQuery",
-  "query": {
-    "argumentDefinitions": [],
-    "kind": "Root",
-    "name": "PostListPageQuery",
-    "operation": "query",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "PostsConnection",
-        "name": "allPosts",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "PostsEdge",
-            "name": "edges",
-            "plural": true,
-            "selections": [
+              },
               {
-                "kind": "LinkedField",
+                "kind": "ScalarField",
                 "alias": null,
+                "name": "description",
                 "args": null,
-                "concreteType": "Posts",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "description",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "imageUrl",
-                    "storageKey": null
-                  }
-                ],
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "imageUrl",
+                "args": null,
                 "storageKey": null
               }
-            ],
-            "storageKey": null
+            ]
           }
-        ],
-        "storageKey": null
+        ]
       }
     ]
+  }
+];
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "PostListPageQuery",
+  "id": null,
+  "text": "query PostListPageQuery {\n  allPosts {\n    edges {\n      node {\n        id\n        description\n        imageUrl\n      }\n    }\n  }\n}\n",
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
+    "name": "PostListPageQuery",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": [],
+    "selections": v0
   },
-  "text": "query PostListPageQuery {\n  allPosts {\n    edges {\n      node {\n        id\n        description\n        imageUrl\n      }\n    }\n  }\n}\n"
+  "operation": {
+    "kind": "Operation",
+    "name": "PostListPageQuery",
+    "argumentDefinitions": [],
+    "selections": v0
+  }
 };
-
-module.exports = batch;
+})();
+(node/*: any*/).hash = 'd68da92f03a296d64bc4d16fb5737c4b';
+module.exports = node;

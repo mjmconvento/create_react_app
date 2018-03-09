@@ -7,22 +7,31 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type InboxDataMessage_message$ref = any;
+import type { FragmentReference } from 'relay-runtime';
+declare export opaque type InboxData_messages$ref: FragmentReference;
 export type InboxData_messages = {|
   +allMessages: ?{|
     +edges: $ReadOnlyArray<?{|
       +node: ?{|
-        +id: string;
-        +message: ?string;
-        +createdAt: ?any;
-      |};
-    |}>;
-  |};
+        +id: string,
+        +message: ?string,
+        +createdAt: ?any,
+        +$fragmentRefs: InboxDataMessage_message$ref,
+      |},
+    |}>,
+  |},
+  +$refType: InboxData_messages$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = {
+  "kind": "Fragment",
+  "name": "InboxData_messages",
+  "type": "Query",
+  "metadata": null,
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
@@ -42,13 +51,12 @@ const fragment /*: ConcreteFragment*/ = {
       "type": "String"
     }
   ],
-  "kind": "Fragment",
-  "metadata": null,
-  "name": "InboxData_messages",
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "allMessages",
+      "storageKey": null,
       "args": [
         {
           "kind": "Variable",
@@ -64,44 +72,45 @@ const fragment /*: ConcreteFragment*/ = {
         }
       ],
       "concreteType": "MessagesConnection",
-      "name": "allMessages",
       "plural": false,
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "edges",
+          "storageKey": null,
           "args": null,
           "concreteType": "MessagesEdge",
-          "name": "edges",
           "plural": true,
           "selections": [
             {
               "kind": "LinkedField",
               "alias": null,
+              "name": "node",
+              "storageKey": null,
               "args": null,
               "concreteType": "Messages",
-              "name": "node",
               "plural": false,
               "selections": [
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "args": null,
                   "name": "id",
+                  "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "args": null,
                   "name": "message",
+                  "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "args": null,
                   "name": "createdAt",
+                  "args": null,
                   "storageKey": null
                 },
                 {
@@ -109,17 +118,13 @@ const fragment /*: ConcreteFragment*/ = {
                   "name": "InboxDataMessage_message",
                   "args": null
                 }
-              ],
-              "storageKey": null
+              ]
             }
-          ],
-          "storageKey": null
+          ]
         }
-      ],
-      "storageKey": null
+      ]
     }
-  ],
-  "type": "Query"
+  ]
 };
-
-module.exports = fragment;
+(node/*: any*/).hash = '749f55495cb9635424abd396184b3c0f';
+module.exports = node;
